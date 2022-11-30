@@ -11,6 +11,8 @@ const controladormultimedia = require ('../controllers/multimediacontroller');
 const controladorPostulaciones = require ('../controllers/postulacionescontroller');
 const controladorregistrocatalogo = require ('../controllers/registrocatalogocontroller');
 const controladorusuario = require ('../controllers/usuariocontroller');
+const categoriacontroller = require ('../controllers/categoriacontroller');
+
 
 /*rutas tabla empleador*/
 router.get('/ListarEmpleador', controladorEmpleador.ListarEmpleador);
@@ -43,7 +45,7 @@ router.delete('/Eliminarmultimedia/:id', controladormultimedia.Eliminarmultimedi
 /*rutas tabla postulaciones*/
 
 router.get('/Listarpostulaciones', controladorPostulaciones.Listarpostulaciones);
-router.get('/postulaciones/:id', controladorPostulaciositnes.ListarId3);
+router.get('/postulaciones/:id', controladorPostulaciones.ListarId3);
 router.post('/Guardarpostulaciones', controladorPostulaciones.Guardarpostulaciones);
 router.delete('/eliminarpostulaciones/:id', controladorPostulaciones.Eliminarpostulacion);
 
@@ -60,6 +62,12 @@ router.get('/Listarusuario', controladorusuario.Listarusuario);
 router.get('/usuario/:id', controladorusuario.ListarId6);
 router.post('/Guardarusuario', controladorusuario.Guardarusuario);
 router.delete('/Eliminarusuario/:id', controladorusuario.Eliminarusuario);
+
+/*rutas tabla categoria*/
+router.get('/Listarcategorianew',categoriacontroller.Listarcategorianew);
+router.post('/guardarcategoria',categoriacontroller.guardarcategoria);
+router.get('/categoria/:id', categoriacontroller.ListarIdcategoria);
+router.delete('/eliminarcategoria/:id',categoriacontroller.eliminarcategoria);
 
 
 /*rutas de consultas*/

@@ -20,6 +20,7 @@ module.exports = (sequelize, DataTypes) => {
   }
   registrocatalogo.init({
     id: {
+      
       allowNull: false,
       autoIncrement: true,
       primaryKey: true,
