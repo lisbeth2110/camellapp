@@ -2,7 +2,7 @@
 const {
   Model
 } = require('sequelize');
-const empleador = require('./empleador');
+const usuario = require('./empleador');
 module.exports = (sequelize, DataTypes) => {
   class usuario extends Model {
     /**
@@ -18,19 +18,32 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   usuario.init({
+
     id: {
       allowNull: false,
       autoIncrement: true,
       primaryKey: true,
       type: DataTypes.INTEGER
     },
-    correo: DataTypes.STRING,
+    correo: {
+      type: DataTypes.STRING,
     contrasena: DataTypes.STRING,
+   
+  },
+  contrasena:{ 
+    type: DataTypes.STRING,
+  },
+  rol:{
+    type: DataTypes.STRING,
     rol: DataTypes.STRING
-  }, {
+  }
+}, {
     sequelize,
     modelName: 'usuario',
     tableName: 'usuario'
   });
   return usuario;
 };
+
+/////////
+
