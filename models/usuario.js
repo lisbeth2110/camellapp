@@ -2,7 +2,8 @@
 const {
   Model
 } = require('sequelize');
-const empleador = require('./empleador');
+const usuario = require('./empleador');
+
 module.exports = (sequelize, DataTypes) => {
   class usuario extends Model {
     /**
@@ -12,21 +13,34 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      usuario.hasMany(models.empleador, {foreignKey: 'id_usuario'});
-      usuario.hasMany(models.postulante, {foreignKey: 'id_usuario'});
-     
+      usuario.hasMany(models.empleador, { foreignKey: 'id_usuario' });
+      usuario.hasMany(models.postulante, { foreignKey: 'id_usuario' });
+
     }
   }
   usuario.init({
+
     id: {
       allowNull: false,
       autoIncrement: true,
       primaryKey: true,
       type: DataTypes.INTEGER
     },
-    correo: DataTypes.STRING,
-    contrasena: DataTypes.STRING,
-    rol: DataTypes.STRING
+    correo: {
+      type: DataTypes.STRING,
+      contrasena: DataTypes.STRING,
+      allowNull: false,
+
+    },
+    contrasena: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    rol: {
+      type: DataTypes.STRING,
+      rol: DataTypes.STRING,
+      allowNull: false,
+    }
   }, {
     sequelize,
     modelName: 'usuario',
@@ -34,3 +48,6 @@ module.exports = (sequelize, DataTypes) => {
   });
   return usuario;
 };
+
+/////////
+

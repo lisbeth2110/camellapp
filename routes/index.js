@@ -1,8 +1,6 @@
 var express = require('express');
 var router = express.Router();
 
-
-
 const controladorEmpleador = require ('../controllers/empladorcontroller');
 const controladorPostulante = require ('../controllers/postulantecontroller');
 const controladorofertaempleo = require ('../controllers/ofertaempleocontroller');
@@ -11,6 +9,7 @@ const controladormultimedia = require ('../controllers/multimediacontroller');
 const controladorPostulaciones = require ('../controllers/postulacionescontroller');
 const controladorregistrocatalogo = require ('../controllers/registrocatalogocontroller');
 const controladorusuario = require ('../controllers/usuariocontroller');
+const controladorauth = require ('../controllers/authcontroller');
 
 /*rutas tabla empleador*/
 router.get('/ListarEmpleador', controladorEmpleador.ListarEmpleador);
@@ -43,7 +42,7 @@ router.delete('/Eliminarmultimedia/:id', controladormultimedia.Eliminarmultimedi
 /*rutas tabla postulaciones*/
 
 router.get('/Listarpostulaciones', controladorPostulaciones.Listarpostulaciones);
-router.get('/postulaciones/:id', controladorPostulaciositnes.ListarId3);
+router.get('/postulaciones/:id', controladorPostulaciones.ListarId3);
 router.post('/Guardarpostulaciones', controladorPostulaciones.Guardarpostulaciones);
 router.delete('/eliminarpostulaciones/:id', controladorPostulaciones.Eliminarpostulacion);
 
@@ -61,9 +60,7 @@ router.get('/usuario/:id', controladorusuario.ListarId6);
 router.post('/Guardarusuario', controladorusuario.Guardarusuario);
 router.delete('/Eliminarusuario/:id', controladorusuario.Eliminarusuario);
 
-
 /*rutas de consultas*/
-
 
 router.get('/consultaPostulantexCategoria', contoladorConsultas.consultaPostulantesxCategoria);
 router.get('/consultaOfertaCategoria', contoladorConsultas.consultaOfertaxCategoria);
@@ -73,6 +70,10 @@ router.get('/consultamultimediaXcatalogo', contoladorConsultas.consultamultimedi
 router.get('/consultaempleadorXusuario', contoladorConsultas.consultaempleadorXusuario);
 router.get('/consultapostulanteXusuario', contoladorConsultas.consultapostulanteXusuario);
 router.get('/consultaofertaXempleador', contoladorConsultas.consultaofertaXempleador);
+
+/*rutas de usuario*/
+router.post('/singin', controladorauth.signIn);
+router.post('/singup', controladorauth.signUp);
 
 module.exports = router;
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
